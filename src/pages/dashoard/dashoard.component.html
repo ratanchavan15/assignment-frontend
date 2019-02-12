@@ -1,0 +1,45 @@
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="">List Movies</button>
+    <button mat-menu-item routerLink="/add">Add Movie</button>
+    <button mat-menu-item routerLink="/delete">Delete Movie</button>
+</mat-menu>
+
+<mat-toolbar style="color : blueviolet">MOVIES DASHBOARD</mat-toolbar>
+
+<!-- Search div starts -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="" *ngIf="moviesList !='' ||moviesList.length > 0">
+         <div class="">
+            <input type="text" style="width: 100%" name="search" class="" [(ngModel)]="movieFilter.searchTerm"
+              placeholder="Enter Store Filter Criteria">
+            <div class="">
+              <span class="">
+                <i class=""></i>
+              </span>
+            </div>
+          </div> 
+        </div>
+      </div>
+</div>
+
+  <!-- search div ends -->
+
+<div style="height: 400px; overflow: scroll;">
+<mat-selection-list #shoes>
+  <div *ngFor="let eachMovie of moviesList |movieFilter: movieFilter;let i=index;" (click)="selectMovie(index)">
+      <mat-list-option>
+          {{eachMovie.Title}}
+      </mat-list-option>
+  </div>
+</mat-selection-list>
+</div>
+<div class="row">
+  <div class="col-sm-10"></div>
+  <div class="col-sm-2">
+
+      <button mat-button style="position: sticky;color: white;background-color: blueviolet;" (click)="deleteSelectedMovies()">DELETE</button>
+
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="" style="width:100%; margin:10px;" *ngIf="!isEmpty(moviesDataList) ||moviesDataList.length > 0">
+    <div class="clearfix"></div>
+
+    <div style=" overflow-y:scroll; max-height:500px; margin-bottom: 20px">
+<table id="customers" class="size-11">
+    <tr>
+      <th (click)="filterColumn('Title',filterTitle,false);filterTitle = ! filterTitle">Title<i class="fa fa-sort" aria-hidden="true"></i></th>
+      <th>Year <i class="fa fa-sort"></i></th>
+      <th>BoxOffice <i class="fa fa-sort"></i></th>
+      <th>imdbRating <i class="fa fa-sort"></i></th>
+      <th>Released <i class="fa fa-sort"></i></th>
+    </tr>
+    <tbody>
+      <!-- (click)="redirectToTrends(data)"  |movieFilter: movieFilter;let i=index;-->
+      <tr *ngFor="let data of moviesDataList |movieFilter: movieFilter;let i=index;">
+        <td style="color: black; text-align: left"><b><a>{{data.Title}}</a></b></td>
+        <td class="text-left">{{data.Year}}</td>
+        <td class="text-right">{{data.BoxOffice}}</td>
+        <td class="text-right">{{data.imdbRating}}</td>
+        <td class="text-right">{{data.Released}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <!-- table ends here -->
+<div class="clearfix"></div>
+</div>
+</div>
